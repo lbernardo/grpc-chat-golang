@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package v1;
+
+service StarLord {
+  rpc ConnectStream (User) returns (stream Message) {}
+  rpc SendMessage(Message) returns (Close);
+}
+
+message Message {
+  string id = 1;
+  string content = 2;
+  User userFrom = 3;
+  User userTo = 4;
+}
+
+message User {
+  string name = 2;
+}
+
+message Close {}
